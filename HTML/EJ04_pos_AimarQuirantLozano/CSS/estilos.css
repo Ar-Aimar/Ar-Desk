@@ -1,0 +1,48 @@
+@import url("formato_2.css");
+
+.nav {
+  background-color: rgb(172, 195, 226);
+  padding: 30px;
+  padding-left: 80px;
+}
+
+.content-text {
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#description-titol {
+  font-size: 60px;
+}
+
+.text {
+  font-size: 25px;
+}
+
+.cards {
+  background-color: rgb(111, 109, 128);
+  display: inline-flex;
+}
+
+.card-background {
+  background-color: rgb(58, 58, 79);
+  margin: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.card-shadow {
+  box-shadow: 13px 13px 10px rgb(71, 71, 71);
+  width: 25%;
+  display: block;
+}
+
+.text-card {
+  color: white;
+  padding: 20px;
+}
+
+footer {
+  text-align: center;
+}

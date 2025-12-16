@@ -1,0 +1,157 @@
+#header {
+  min-height: 4em;
+  background: #3f3567;
+  box-shadow: 0px 10px 20px #181818;
+  display: flex;
+  justify-content: space-between;
+}
+
+#icon {
+  max-width: 4em;
+  min-width: 4em;
+  margin: 1%;
+  display: flex;
+  align-content: center;
+}
+
+#urls {
+  width: 30%;
+  align-content: center;
+}
+
+#lista {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro",
+    "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.fondo {
+  margin: 6em;
+  background: #e4e4e4;
+  min-height: 10em;
+  max-width: 85%;
+  width: 60%;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  padding: 28px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animales {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  justify-content: space-between;
+}
+
+.card {
+  flex: 1 1;
+  min-width: 180px;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0px 0.5em 12px #505050;
+}
+
+.card:hover {
+  transform: translateY(-1em);
+  transition: 0.2s;
+  box-shadow: 0px 1em 12px #505050;
+}
+
+.card img {
+  width: 100%;
+  max-width: 240px;
+  max-height: 140px;
+  object-fit: contain;
+  display: block;
+  margin: 6px;
+}
+
+.titulo {
+  margin-top: 1em;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 1em;
+}
+
+.secion1 {
+  background: linear-gradient(
+    to bottom,
+    #a66b4a 0%,
+    rgba(104, 78, 58, 0.94) 60%
+  );
+  color: #ffffff;
+}
+.secion2 {
+  background: linear-gradient(
+    to bottom,
+    #2e8b57 0%,
+    rgba(35, 63, 44, 0.94) 60%
+  );
+  color: #ffffff;
+}
+.secion3 {
+  background: linear-gradient(
+    to bottom,
+    #6fb3d2 0%,
+    rgba(92, 132, 150, 0.94) 60%
+  );
+  color: #ffffff;
+}
+.secion4 {
+  background: linear-gradient(
+    to bottom,
+    #f2994a 0%,
+    rgba(194, 115, 52, 0.94) 60%
+  );
+  color: #ffffff;
+}
+.secion5 {
+  background: linear-gradient(
+    to bottom,
+    #a389b8 0%,
+    rgba(86, 64, 102, 0.94) 60%
+  );
+  color: #ffffff;
+}
+.secion6 {
+  background: linear-gradient(
+    to bottom,
+    #d8b7a6 0%,
+    rgba(177, 146, 131, 0.94) 60%
+  );
+  color: #ffffff;
+}
+
+#footer {
+  min-height: 8em;
+  background: #3f3567;
+  box-shadow: 0px 0px 32px #181818;
+}
