@@ -1,0 +1,42 @@
+main {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+#resultado {
+    font-family: monospace;
+    font-size: 3em;
+}
+
+div {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #EAEAEA;
+    border-radius: 14px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 50px;
+    padding-top: 40px;
+    padding-bottom: 175px;
+}
+
+#top_section {
+    width: 100%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	
+}
+
+#down_section {
+    width: 100%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	
+}
+
+#inputRol{
+    width: 50%;
+}

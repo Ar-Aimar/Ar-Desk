@@ -1,0 +1,239 @@
+@charset "utf-8";
+@font-face {
+  font-family: Michroma;
+  src: url("../FNT/Michroma-Regular.ttf");
+}
+@font-face {
+  font-family: FontdinerSwanky;
+  src: url("../FNT/FontdinerSwanky-Regular.ttf");
+}
+@font-face {
+  font-family: Bitcount;
+  src: url("../FNT/BitcountGridSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf");
+}
+@font-face {
+  font-family: PottaOne;
+  src: url("../FNT/PottaOne-Regular.ttf");
+}
+@font-face {
+  font-family: Chokokutai;
+  src: url("../FNT/Chokokutai-Regular.ttf");
+}
+@font-face {
+  font-family: TacOne;
+  src: url("../FNT/TacOne-Regular.ttf");
+}
+@font-face {
+  font-family: MomoSignature;
+  src: url( "../FNT/MomoSignature-Regular.ttf");
+}
+@font-face {
+  font-family: ABlack;
+  src: url( "../FNT/ArchivoBlack-Regular.ttf");
+}
+@font-face {
+  font-family: Butcherman;
+  src: url(  "../FNT/Butcherman-Regular.ttf");
+}
+body {
+  margin: 0;
+  background-image: url("../IMG/forest.png");
+  background-repeat: no-repeat;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+  background-size: 100% auto;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.contenedor {
+  position: relative;
+  z-index: 3;
+  background-color: #2e2e2e;
+  color: white;
+  width: 60%;
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 70px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+.secctions {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.card {
+  box-sizing: border-box;
+  flex: 1 1 30%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.text {
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border-radius: 10px 10px 0 0;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  font-size: 18px;
+  min-height: 140px;
+  flex: 1 1 auto;
+}
+.text p {
+  margin: 0 0 12px 0;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+.text p:first-of-type::first-letter {
+  font-size: 50px;
+  line-height: 1;
+  float: left;
+  margin-right: 10px;
+  margin-top: 2px;
+}
+.autor {
+  font-size: 20px;
+  margin-top: auto;
+  text-align: center;
+  padding-top: 6px;
+}
+.font-label {
+  background-color: #2e2e2e;
+  border: 1px solid rgba(255,255,255,0.65);
+  border-top: none;
+  padding: 8px 10px;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  color: #ffffff;
+  font-size: 18px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.label-michroma {
+	font-family: Michroma;
+}
+.label-fontdiner {
+	font-family: FontdinerSwanky; 
+}
+.label-bitcount {
+	font-family: Bitcount; 
+}
+.label-pottaone {
+	font-family: PottaOne; 
+}
+.label-chokokutai {
+	font-family: Chokokutai; 
+}
+.label-tacone {
+	font-family: TacOne; 
+}
+.text_1 {
+  background-color: #bee07f;
+  font-family: Michroma;
+  color: #fff;
+}
+.text_2 {
+  background-color: #96e080;
+  font-family: FontdinerSwanky;
+  color: #fff;
+}
+.text_3 {
+  background-color: #80e08e;
+  font-family: Bitcount;
+  color: #fff;
+}
+.text_4 {
+  background-color: #D8e0c9;
+  font-family: PottaOne;
+  color: #fff;
+}
+.text_5 {
+  background-color: #e0De80;
+  font-family: Chokokutai;
+  color: #fff;
+}
+.text_6 {
+  background-color: #e0D380;
+  font-family: TacOne;
+  color: #fff;
+}
+#secction_2 {
+  margin-top: 50px;
+}
+#secction_3 {
+  margin-top: 50px;
+}
+#nav {
+  min-height: 65px;
+  display: flex;
+}
+#nav-recuadro {
+  background-color: #2e2e2e;
+  min-height: 65px;
+  width: 80%;
+  border-bottom-left-radius: 20px;
+  z-index: 2;
+  border-bottom-right-radius: 20px;
+}
+.nav_divisor {
+  width: 10%;
+  min-height: 65px;
+}
+footer {
+  background-color: #2e2e2e;
+  z-index: 30;
+  position: relative;
+  min-height: 65px;
+}
+main {
+  overflow: auto;
+  max-height: 600px;
+}
+#titulo {
+  color: white;
+  text-align: center;
+}
+.text_7 {
+  background-color: #cfe5a0;
+  font-family: MomoSignature;
+  color: #fff;
+}
+.text_8 {
+  background-color: #a7e0a8;
+  font-family: ABlack;
+  color: #fff;
+}
+.text_9 {
+  background-color: #e6e7c0;
+  font-family: Butcherman;
+  color: #fff;	
+}
+.label-7 {
+	font-family: MomoSignature; 
+}
+.label-8 {
+	font-family: ABlack; 
+}
+.label-9 {
+	font-family: Butcherman; 
+}
