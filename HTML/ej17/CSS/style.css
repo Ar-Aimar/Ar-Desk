@@ -1,0 +1,188 @@
+#backgroundEditor {
+    background-color: var(--bg-editor);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100%;
+    transition: background-color 0.3s ease;
+}   
+#backgroundFile {
+    background-color: var(--bg-file);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 10px var(--shadow);
+    padding: 20px;
+    width: 210mm;
+    height: 297mm;
+    box-shadow: 0 0 10px rgba(60, 60, 60, 0.5);
+    display: none;
+}
+#fileContent {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    white-space: pre-wrap;
+    outline: none;
+}
+.toolBarElement {
+    margin-right: 10px;
+}
+
+#toolBar {
+    background-color: var(--bg-toolbar);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+/* Grupos de botones */
+.toolGroup {
+    display: flex;
+    gap: 2px;
+}
+
+/* Estilo de cada botón */
+.toolButton {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-color);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    position: relative;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Efecto al pasar el ratón */
+.toolButton:hover {
+    background-color: var(--hover-button) !important;
+    border: 1px solid var(--border-color);
+}
+
+/* Efecto al pulsar */
+.toolButton:active {
+    background-color: #dfe1e5;
+}
+
+/* Separador vertical entre grupos */
+.separator {
+    width: 1px;
+    height: 24px;
+    background-color: #dadce0;
+    margin: 0 8px;
+}
+
+/* añadir archivo */
+#fileInput {
+    display: none;
+}
+
+/* Creamos el diseño del Tooltip */
+.toolButton::after {
+    /* Toma el texto del atributo HTML */
+    content: attr(data-tooltip); 
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+    z-index: 100;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    /* Evita que el ratón interactúe con el cartelito */
+    pointer-events: none;
+}
+
+/* Mostramos el Tooltip al pasar el ratón */
+.toolButton:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(5px); /* Pequeño efecto de caída */
+}
+
+/* Definición de colores por defecto (Modo Claro) */
+:root {
+    --bg-editor: #e4e4e4;
+    --bg-file: #ffffff;
+    --bg-toolbar: #f8f9fa;
+    --text-color: #1f1f1f;
+    --border-color: #d1d1d1;
+    --hover-button: #e8eaed; 
+    --shadow: rgba(60, 60, 60, 0.5);
+}
+
+/* Colores para Modo Oscuro */
+body.dark-mode {
+    --bg-editor: #121212;
+    --bg-file: #1e1e1e;
+    --bg-toolbar: #2d2d2d;
+    --text-color: #e0e0e0;
+    --border-color: #444;
+    --hover-button: #404040;
+    --shadow: rgba(0, 0, 0, 0.7);
+}
+
+/* Transición para la barra y botones */
+#toolBar, .toolButton {
+    transition: background-color 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+}
+
+
+/* 1. Invertimos los iconos que son negros por defecto (como el toggle_off o botones de edición) */
+body.dark-mode .toolButton img {
+    filter: invert(0.9); 
+}
+
+body.dark-mode #toggleTheme img {
+    filter: none !important;
+}
+
+#themeIcon {
+    transition: transform 0.3s ease;
+}
+
+body.dark-mode #toggleIcon {
+    filter: invert(1) brightness(2);
+}
+
+/* Estilo para el selector de fuentes */
+.fontSelector {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+    padding: 2px;
+}
+
+/* En modo oscuro, las opciones del select suelen necesitar color de fondo */
+body.dark-mode .fontSelector {
+    background-color: var(--bg-toolbar);
+}
+
+/* Aseguramos que el contenido use la fuente seleccionada */
+#fileContent {
+    /* Eliminamos la fuente fija para que sea dinámica */
+    font-size: 12px;
+    white-space: pre-wrap;
+    outline: none;
+}

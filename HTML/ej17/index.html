@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Tectos</title>
+    <link rel="icon" type="image/png" href="IMG/file_open_100dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png">
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/app.js" defer></script>
+    <script src="JS/light_mode.js" defer></script>
+    <script src="JS/font.js" defer></script>
+</head>
+
+<body>
+    <!-- barra de herramientas -->
+    <header id="toolBar">
+        <div class="toolGroup">
+            <!-- importar archivo -->
+            <button id="importarTextoPlano" class="toolButton" data-tooltip="Importar (Ctrl + I)">
+                <img src="IMG/file_open_100dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png" alt="Importar Archivo" width="24"
+                    height="24">
+            </button>
+            <button id="descargarTextoPlano" class="toolButton" data-tooltip="Descargar (Ctrl + S)">
+                <img src="IMG/download_100dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png" alt="Descargar Archivo" width="24"
+                    height="24">
+
+            </button>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="toolGroup">
+            <input type="file" id="fileInput" accept=".txt, .html, .css, .js">
+            <button id="cortarTextoPlano" class="toolButton" data-tooltip="Cortar (Ctrl + X)">
+                <img src="IMG/content_cut_100dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png" alt="Cortar Archivo" width="24"
+                    height="24">
+            </button>
+            <button id="copiarTextoPlano" class="toolButton" data-tooltip="Copiar (Ctrl + C)">
+                <img src="IMG/content_copy_100dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png" alt="Copiar Archivo" width="24"
+                    height="24">
+            </button>
+            <button id="pegarTextoPlano" class="toolButton" data-tooltip="Pegar (Ctrl + V)">
+                <img src="IMG/content_paste_100dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png" alt="Pegar Archivo" width="24"
+                    height="24">
+            </button>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="toolGroup">
+            <button id="deshacerTexto" class="toolButton" data-tooltip="Deshacer (Ctrl + Z)">
+                <img src="IMG/undo_100dp_999999_FILL0_wght400_GRAD0_opsz48.png" alt="Deshacer" width="24" height="24">
+            </button>
+            <button id="rehacerTexto" class="toolButton" data-tooltip="Rehacer (Ctrl + Y)">
+                <img src="IMG/redo_100dp_999999_FILL0_wght400_GRAD0_opsz48.png" alt="Rehacer" width="24" height="24">
+            </button>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="toolGroup">
+            <div class="toolButton" style="padding: 0 5px; gap: 5px;">
+                <img src="IMG/custom_typography_100dp_000000_FILL0_wght400_GRAD0_opsz48.png" width="20" height="20"
+                    alt="Fuente">
+                <select id="selectFont" class="fontSelector" data-tooltip="Cambiar Fuente">
+                    <option value="'Courier New', Courier, monospace">Courier New</option>
+                    <option value="Arial, sans-serif">Arial</option>
+                    <option value="'Times New Roman', serif">Times New Roman</option>
+                    <option value="Verdana, sans-serif">Verdana</option>
+                    <option value="Georgia, serif">Georgia</option>
+                    <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+                    <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+                    <option value="Impact, sans-serif">Impact</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="toolGroup">
+            <button id="toggleTheme" class="toolButton" data-tooltip="Cambiar Modo">
+                <img id="themeIcon" src="IMG/light_mode_100dp_7A611D_FILL0_wght400_GRAD0_opsz48.png" alt="Modo"
+                    width="24" height="24">
+                <img id="toggleIcon" src="IMG/toggle_off_100dp_000000_FILL0_wght400_GRAD0_opsz48.png" alt="Toggle"
+                    width="24" height="24">
+            </button>
+        </div>
+
+    </header>
+    <main>
+        <div id="backgroundEditor">
+            <!-- editor de texto -->
+            <div id="backgroundFile">
+                <div id="mostrarTextoPlano">
+                    <pre id="fileContent" contenteditable="true">
+
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
