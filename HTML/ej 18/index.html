@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Pro - Editor Gráfico Avanzado</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo">CanvasPro</div>
+        <ul class="nav-links">
+            <li id="btn-new">📄 Nuevo</li>
+            <li id="btn-import-img">🖼️ Insertar Imagen</li>
+            <li id="btn-save-project" title="Guardar Proyecto (JSON)">💾 Guardar Proyecto</li>
+            <li id="btn-load-project" title="Cargar Proyecto (JSON)">📂 Cargar Proyecto</li>
+            <li id="btn-undo" title="Control + Z">↩️ Deshacer</li>
+            <li id="btn-redo" title="Control + Shift + Z">↪️ Rehacer</li>
+            <li id="btn-export">⬇️ Exportar</li>
+        </ul>
+        <input type="file" id="file-import-img" hidden accept="image/*">
+        <input type="file" id="file-load-project" hidden accept=".json">
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar tools-sidebar">
+            <button class="tool active" id="tool-brush" title="Pincel">✏️</button>
+            <button class="tool" id="tool-eraser" title="Borrador">🧼</button>
+            <button class="tool" id="tool-shapes" title="Figuras">🔳</button>
+            <button class="tool" id="tool-select" title="Seleccionar">⚗️</button>
+            <button class="tool" id="tool-move" title="Mover">✋</button>
+            <div class="divider"></div>
+            <input type="color" id="global-color" value="#ff8c00" title="Color Principal">
+        </aside>
+
+        <aside class="sidebar sub-tools-sidebar" id="sub-tools-panel">
+            <div id="props-brush" class="props-group active">
+                <h4>Pincel</h4>
+                <label>Grosor: <span id="val-brush-size">5</span></label>
+                <input type="range" id="brush-size" min="1" max="150" value="5">
+                <label>Difuminado: <span id="val-brush-blur">0</span></label>
+                <input type="range" id="brush-blur" min="0" max="50" value="0">
+                <label>Estilo:</label>
+                <select id="brush-style">
+                    <option value="solid">Sólido</option>
+                    <option value="marker">Rotulador (Transparente)</option>
+                </select>
+            </div>
+            <div id="props-eraser" class="props-group">
+                <h4>Borrador</h4>
+                <label>Tamaño: <span id="val-eraser-size">20</span></label>
+                <input type="range" id="eraser-size" min="1" max="200" value="20">
+                <label>Difuminación: <span id="val-eraser-blur">0</span></label>
+                <input type="range" id="eraser-blur" min="0" max="50" value="0">
+            </div>
+            <div id="props-shapes" class="props-group">
+                <h4>Figuras</h4>
+                <p style="font-size:11px; color:#aaa; margin:0 0 10px 0;">Mantén "Alt" para dibujar desde el centro.</p>
+                <label>Forma:</label>
+                <select id="shape-type">
+                    <option value="rect">Cuadrado / Rectángulo</option>
+                    <option value="circle">Círculo / Elipse</option>
+                    <option value="polygon">Polígono</option>
+                    <option value="star">Estrella</option>
+                    <option value="arrow">Flecha</option>
+                </select>
+                <div id="shape-sides-container" style="display:none; margin-top:10px;">
+                    <label>Lados/Picos: <span id="val-shape-sides">5</span></label>
+                    <input type="range" id="shape-sides" min="3" max="12" value="5">
+                </div>
+                <label style="margin-top:10px;">Grosor línea: <span id="val-shape-size">3</span></label>
+                <input type="range" id="shape-size" min="1" max="50" value="3">
+            </div>
+            <div id="props-select" class="props-group">
+                <h4>Seleccionar</h4>
+                <label>Herramienta:</label>
+                <select id="select-type">
+                    <option value="lasso">Lazo Libre</option>
+                    <option value="rect">Marco Rectangular</option>
+                    <option value="circle">Marco Elíptico</option>
+                </select>
+            </div>
+        </aside>
+
+        <main class="workspace" id="workspace">
+            <div id="empty-state">
+                <h2>Arrastra una imagen aquí</h2>
+                <button id="btn-empty-new">Crear Nuevo Proyecto</button>
+            </div>
+            <div id="canvas-wrapper" style="display: none;">
+                <canvas id="ui-layer" style="pointer-events: none; z-index: 9999;"></canvas>
+            </div>
+        </main>
+
+        <aside class="sidebar layers-sidebar">
+            <h4>Capas</h4>
+            <div class="layers-controls">
+                <button id="btn-add-layer">➕ Capa</button>
+                <button id="btn-delete-layer">🗑️</button>
+            </div>
+            <ul id="layers-list"></ul>
+        </aside>
+    </div>
+
+    <div id="modal-new" class="modal">
+        <div class="modal-content" style="width: 500px;">
+            <h3>Nuevo Lienzo</h3>
+            <div class="preview-container">
+                <div id="canvas-preview"></div>
+                <span id="preview-text">1080 x 1080 px</span>
+            </div>
+            <div class="presets-grid">
+                <button class="btn-preset" onclick="setPreset(2480, 3508)">A4 (Impresión)</button>
+                <button class="btn-preset" onclick="setPreset(1920, 1080)">1080p (Web/Video)</button>
+                <button class="btn-preset" onclick="setPreset(1080, 1080)">1:1 (Redes)</button>
+            </div>
+            <div class="settings" style="margin-top: 15px;">
+                <div style="display: flex; gap: 10px;">
+                    <label>Ancho: <input type="number" id="canvas-w" value="1080"></label>
+                    <label>Alto: <input type="number" id="canvas-h" value="1080"></label>
+                </div>
+                <hr>
+                <label>Fondo: <input type="color" id="bg-color" value="#ffffff"></label>
+                <label><input type="checkbox" id="bg-transparent"> Fondo Transparente</label>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button id="btn-create-canvas" class="btn-primary">Crear</button>
+                <button id="btn-close-new" class="btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-export" class="modal">
+        <div class="modal-content">
+            <h3>Exportar Imagen</h3>
+            <button class="btn-primary" onclick="exportImage('png')">Guardar PNG (Transparencia)</button>
+            <button class="btn-primary" onclick="exportImage('jpeg')">Guardar JPG (Fondo Blanco)</button>
+            <button id="btn-close-export" class="btn-secondary">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="JS/state.js"></script>
+    <script src="JS/engine.js"></script>
+    <script src="JS/tool_brush.js"></script>
+    <script src="JS/tool_eraser.js"></script>
+    <script src="JS/tool_shapes.js"></script>
+    <script src="JS/tool_select.js"></script>
+    <script src="JS/tool_move.js"></script>
+    <script src="JS/events.js"></script>
+</body>
+</html>
